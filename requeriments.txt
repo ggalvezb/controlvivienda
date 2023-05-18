@@ -36,7 +36,6 @@ entrypoints @ file:///C:/ci/entrypoints_1649926621128/work
 et-xmlfile==1.1.0
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
 fastjsonschema @ file:///tmp/build/80754af9/python-fastjsonschema_1620414857593/work/dist
-fastapi=0.12.0
 flake8 @ file:///tmp/build/80754af9/flake8_1620776156532/work
 Flask==2.2.3
 fonttools==4.34.4
@@ -186,7 +185,6 @@ typing_extensions @ file:///opt/conda/conda-bld/typing_extensions_1647553014482/
 ujson @ file:///C:/ci/ujson_1648044223886/work
 Unidecode @ file:///tmp/build/80754af9/unidecode_1614712377438/work
 urllib3 @ file:///C:/ci/urllib3_1650639883891/work
-uvicorn==0.14.0
 watchdog @ file:///C:/ci/watchdog_1638367441841/work
 wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
 webencodings==0.5.1
@@ -197,3 +195,7 @@ wincertstore==0.2
 wrapt @ file:///C:/ci/wrapt_1607574570428/work
 yapf @ file:///tmp/build/80754af9/yapf_1615749224965/work
 zipp @ file:///C:/ci/zipp_1652273994994/work
+uvicorn==0.12.3
+aiofiles==0.6.0
+python-multipart==0.0.5
+jinja2==2.11.2
