@@ -196,6 +196,4 @@ wrapt @ file:///C:/ci/wrapt_1607574570428/work
 yapf @ file:///tmp/build/80754af9/yapf_1615749224965/work
 zipp @ file:///C:/ci/zipp_1652273994994/work
 uvicorn==0.15.0
-aiofiles==0.6.0
-python-multipart==0.0.5
-jinja2==2.11.2
+fastapi==0.67.0
