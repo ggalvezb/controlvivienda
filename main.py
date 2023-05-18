@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+#from fastapi.staticfiles import StaticFiles
 from routers import supervisores,psat,administradores,proyectos,auth_user
 
 # Inicia el servidor: uvicorn main:app --reload
@@ -13,7 +13,7 @@ app.include_router(administradores.router)
 app.include_router(proyectos.router)
 app.include_router(auth_user.router)
 
-app.mount("/static", StaticFiles(directory="static"),name="static")
+#app.mount("/static", StaticFiles(directory="static"),name="static")
 
 @app.get("/")
 async def root():
