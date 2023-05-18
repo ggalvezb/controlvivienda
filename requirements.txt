@@ -1,7 +1,6 @@
 anyio==3.6.2
 asttokens==2.2.1
 backcall==0.2.0
-backports.functools-lru-cache=1.6.4
 bcrypt==4.0.1
 certifi==2022.12.7
 cffi==1.15.1
