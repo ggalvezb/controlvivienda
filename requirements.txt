@@ -195,5 +195,4 @@ wincertstore==0.2
 wrapt @ file:///C:/ci/wrapt_1607574570428/work
 yapf @ file:///tmp/build/80754af9/yapf_1615749224965/work
 zipp @ file:///C:/ci/zipp_1652273994994/work
-uvicorn==0.15.0
-fastapi==0.67.0
+
