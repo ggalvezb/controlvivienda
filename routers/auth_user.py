@@ -38,8 +38,6 @@ def search_user_allDB(email:str):
         i=0
         while True:            
             collection=collections[i]
-            print(i)
-            print(collection)
             try:
                 if collection == "users":
                     user = db_client[collection].find_one({"email":email})
@@ -60,27 +58,12 @@ def search_user_allDB(email:str):
             if i==5:
                 return {"Usiario no esta registriado"}
 
-
-# #Funcion de autentificacion de usuario       
-# async def auth_user(token: str = Depends(oauth2)):
-#     exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="credenciales de autenticacion invalidas", headers={"www-Authenticate":"Bearer"})
-#     try:
-#         username = jwt.decode(token, SECRET,algorithms=ALGORITHM).get("sub")
-#         if username is None:
-#             raise exception
-        
-#     except JWTError:
-#         raise exception
-    
-#     return search_user_allDB(username)
-
 #Endpoint de login
 @router.post("/login")
 async def login(form:OAuth2PasswordRequestForm = Depends()):
     user_found_list=search_user_allDB(form.username)
-    print(user_found_list)
     user_found=user_found_list[0]
-    print(user_found)
+    #Por si todo sale mal en el frontend
     user_type=user_found_list[1]
     user_collection=user_found_list[2]
     if not form.password==user_found.password:
@@ -97,7 +80,7 @@ async def login(form:OAuth2PasswordRequestForm = Depends()):
     
   #Actualizo token en registro de tokens
     db_client.tokens.find_one_and_delete({"usuario": form.username})
-    token_dict={"usuario":user_found.email,"token":str(jwt.encode(access_token,SECRET,algorithm=ALGORITHM))}
+    token_dict={"usuario":user_found.email,"token":str(jwt.encode(access_token,SECRET,algorithm=ALGORITHM)),"perfil":user_type}
     db_client.tokens.insert_one(token_dict)
 
-    return {"access_token": jwt.encode(access_token,SECRET,algorithm=ALGORITHM),"token_type":"bearer"}
+    return {"access_token": jwt.encode(access_token,SECRET,algorithm=ALGORITHM),"usuario":user_found.email,"perfil":user_type}
