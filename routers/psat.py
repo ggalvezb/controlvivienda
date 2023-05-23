@@ -29,7 +29,7 @@ async def psat(id:str,token:str = Depends(oauth2)):
     return search_psat("_id", ObjectId(id))
 
 
-#Agrego una psat a la BD   #Problema: no me tira aletas cuando el usuario ya existe.
+#Agrego una psat a la BD   
 @router.post("/")
 async def psat(psat:Psat,token:str = Depends(oauth2)):
     #Reviso Token
@@ -39,6 +39,8 @@ async def psat(psat:Psat,token:str = Depends(oauth2)):
         return {"El usuario ya existe"}
     psat_dict=dict(psat)
     del psat_dict["id"]
+    username = list(psat.email.split("@"))[0]
+    psat_dict["username"]=username
     id = db_client.psats.insert_one(psat_dict).inserted_id  
     new_psat=psat_schema(db_client.psats.find_one({"_id":id}))
     return Psat(**new_psat)

@@ -63,7 +63,6 @@ def search_user_allDB(email:str):
 async def login(form:OAuth2PasswordRequestForm = Depends()):
     user_found_list=search_user_allDB(form.username)
     user_found=user_found_list[0]
-    #Por si todo sale mal en el frontend
     user_type=user_found_list[1]
     user_collection=user_found_list[2]
     if not form.password==user_found.password:
@@ -71,6 +70,7 @@ async def login(form:OAuth2PasswordRequestForm = Depends()):
     
     access_token_expiration=timedelta(minutes=ACCESS_TOKEN_DURATION)
     expire=datetime.utcnow() + access_token_expiration
+    print(user_found)
     access_token={"sub":user_found.username, "exp":expire}
 
     #Actualizo token en registro de usuario
