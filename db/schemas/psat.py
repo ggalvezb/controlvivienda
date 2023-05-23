@@ -4,6 +4,7 @@ def psat_schema(psat) -> dict:
             "nombre":str(psat["nombre"]),
             "rut": str(psat["rut"]),
             "proyectos_asignados":list(psat["proyectos_asignados"]),
+            "token": str(psat["token"]),
             "password": str(psat["password"])
     }
 

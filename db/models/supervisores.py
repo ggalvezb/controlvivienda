@@ -10,3 +10,4 @@ class Supervisor(BaseModel):
     email:str
     rut: str
     psat_asignadas:list
+    token: Optional[str]

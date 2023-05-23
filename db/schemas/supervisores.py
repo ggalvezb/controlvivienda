@@ -5,6 +5,7 @@ def supervisor_schema(user) -> dict:
             "email": user["email"],
             "nombre":str(user["nombre"]),
             "rut": str(user["rut"]),
+            "token": str(user["token"]),
             "psat_asignadas":list(user["psat_asignadas"]),
     }
 

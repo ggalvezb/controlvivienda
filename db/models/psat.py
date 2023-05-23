@@ -9,3 +9,4 @@ class Psat(BaseModel):
     password: Optional[str]
     rut: str
     proyectos_asignados:list
+    token: Optional[str]
