@@ -52,16 +52,13 @@ async def user(user:Supervisor,token:str = Depends(oauth2)):
     user_dict=dict(user)
     user_find=search_user("_id", ObjectId(user.id))
     username=user_find.username
-    password=user_find.password
     try:
         del user_dict["username"]
-        del user_dict["password"]
     except:
         pass
     del user_dict["id"]
     try:
         user_dict["username"]=username
-        user_dict["password"]=password
         db_client.users.find_one_and_replace({"_id": ObjectId(user.id)}, user_dict)
     except:
         return {"Error: No se a encontrado usuario"}

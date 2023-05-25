@@ -53,16 +53,16 @@ async def psat(psat:Psat,token:str = Depends(oauth2)):
     pass_token(token)
 
     user_dict=dict(psat)
-    psat_find=search_psat("_id", ObjectId(user_dict["id"]))
-    password=psat_find.password
+    psat_find=search_psat("email", psat.email)
+    username=psat_find.username
     del user_dict["id"]
-    del user_dict["password"]
+    del user_dict["username"]
     try:
-        user_dict["password"]=password
-        db_client.psats.find_one_and_replace({"_id": ObjectId(psat.id)}, user_dict)
+        user_dict["username"]=username
+        db_client.psats.find_one_and_replace({"email": psat.email}, user_dict)
     except:
         return {"Error: No se a encontrado usuario"}
-    return search_psat("_id", ObjectId(psat.id))
+    return search_psat("email", psat.email)
 
 
 #Elimino un psat de la BD

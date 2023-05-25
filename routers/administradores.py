@@ -77,14 +77,12 @@ async def admin(admin:Admin,token:str = Depends(oauth2)):
     password=admin_found.password
     try:
         del admin_dict["username"]
-        del admin_dict["password"]
     except:
         pass
     del admin_dict["id"]
 
     try:
         admin_dict["username"]=username
-        admin_dict["password"]=password
         db_client.admin.find_one_and_replace({"_id": ObjectId(admin.id)}, admin_dict)
     except:
         return {"Error: No se a encontrado usuario"}
