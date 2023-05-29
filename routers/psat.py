@@ -26,7 +26,7 @@ async def psat(id:str,token:str = Depends(oauth2)):
     #Reviso Token
     pass_token(token)
 
-    return search_psat("_id", ObjectId(id))
+    return search_psat("email", ObjectId(id))
 
 
 #Agrego una psat a la BD   
